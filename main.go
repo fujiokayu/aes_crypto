@@ -10,21 +10,22 @@ type args struct {
 	text string
 }
 
-// constructor
-func parseFlags() *args {
-	var (
-		a = flag.String("key", "default", "help message for \"key\" option")
-		b = flag.String("text", "default", "help message for \"text\" option")
-	)
+// constructor of struct "args"
+func parseArgs() *args {
+
+	arg1 := flag.String("key", "default", "byte key")
+	arg2 := flag.String("text", "default", "text to crypto")
+
+	flag.Parse()
 
 	newArgs := &args{
-		key:  *a,
-		text: *b,
+		key:  *arg1,
+		text: *arg2,
 	}
 	return newArgs
 }
 
 func main() {
-	args := parseFlags()
+	args := parseArgs()
 	fmt.Println(args)
 }
